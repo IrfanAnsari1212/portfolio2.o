@@ -10,7 +10,7 @@
  */
 import type { ContentFile, ContentMap } from './types';
 
-const REPO = import.meta.env.VITE_GITHUB_REPO || 'IrfanAnsari1212/portfolio';
+const REPO = import.meta.env.VITE_GITHUB_REPO || 'IrfanAnsari1212/portfolio2.o';
 const BRANCH = import.meta.env.VITE_GITHUB_BRANCH || 'main';
 const API = 'https://api.github.com';
 

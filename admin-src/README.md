@@ -40,7 +40,7 @@ Copy the **Client ID**, then generate a **Client Secret**.
 | `GITHUB_CLIENT_ID` | your client id | used by the serverless function |
 | `GITHUB_CLIENT_SECRET` | your client secret | **server only — never prefix with `VITE_`** |
 | `VITE_GITHUB_CLIENT_ID` | your client id | baked into the browser bundle |
-| `VITE_GITHUB_REPO` | `IrfanAnsari1212/portfolio` | optional, this is the default |
+| `VITE_GITHUB_REPO` | `IrfanAnsari1212/portfolio2.o` | optional, this is the default |
 | `VITE_ADMIN_USER` | `IrfanAnsari1212` | optional, this is the default |
 
 **3. Redeploy.** `VITE_*` variables are read at build time, so an existing deployment
