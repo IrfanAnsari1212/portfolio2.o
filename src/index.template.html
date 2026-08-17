@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{site.title}}</title>
+<meta name="description" content="{{site.description}}" />
+<meta name="author" content="{{site.author}}" />
+<meta name="theme-color" content="#070d1a" />
+
+<link rel="canonical" href="{{site.url}}/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{site.url}}/" />
+<meta property="og:title" content="{{site.title}}" />
+<meta property="og:description" content="{{site.socialDescription}}" />
+<meta property="og:image" content="{{site.url}}/{{hero.photo}}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{site.title}}" />
+<meta name="twitter:description" content="{{site.socialDescription}}" />
+<meta name="twitter:image" content="{{site.url}}/{{hero.photo}}" />
+
+<script type="application/ld+json">
+{{{blocks.jsonld}}}
+</script>
+
+<link rel="preload" as="image" href="{{hero.photo}}" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e7490'/%3E%3Ctext x='32' y='42' font-size='28' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EIA%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+
+<!-- Without JS the reveal animation would leave the page blank — force everything visible -->
+<noscript>
+  <style>
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .marquee-track { animation: none; }
+  </style>
+</noscript>
+</head>
+
+<body class="bg-[#070d1a] text-slate-300 font-sans antialiased overflow-x-hidden">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- Scroll progress -->
+<div id="progress" class="fixed top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-cyan-400 to-violet-500 z-[60]"></div>
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-transparent">
+  <nav class="max-w-6xl mx-auto px-5 md:px-8 h-20 flex items-center justify-between">
+    <a href="#home" class="font-display text-xl font-bold text-white">
+      &lt;<span class="text-cyan-400">Irfan</span><span class="text-slate-400">/</span><span class="gradient-text">Dev</span>&gt;
+    </a>
+    <ul class="hidden lg:flex items-center gap-8 text-sm font-medium">
+      <li><a class="nav-link" href="#about">About</a></li>
+      <li><a class="nav-link" href="#skills">Skills</a></li>
+      <li><a class="nav-link" href="#projects">Projects</a></li>
+      <li><a class="nav-link" href="#education">Education</a></li>
+      <li><a class="nav-link" href="#certifications">Certifications</a></li>
+      <li>
+        <a href="#contact" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:opacity-90 transition">
+          Hire Me
+        </a>
+      </li>
+    </ul>
+    <button id="menuBtn" class="lg:hidden p-2 text-slate-300" aria-label="Toggle menu"
+            aria-expanded="false" aria-controls="mobileMenu">
+      <svg aria-hidden="true" id="iconOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg aria-hidden="true" id="iconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18L18 6"/></svg>
+    </button>
+  </nav>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="lg:hidden hidden bg-[#0b1120]/95 backdrop-blur border-b border-slate-800">
+    <ul class="px-6 py-4 space-y-3 text-sm font-medium">
+      <li><a class="nav-link block py-1" href="#about">About</a></li>
+      <li><a class="nav-link block py-1" href="#skills">Skills</a></li>
+      <li><a class="nav-link block py-1" href="#projects">Projects</a></li>
+      <li><a class="nav-link block py-1" href="#education">Education</a></li>
+      <li><a class="nav-link block py-1" href="#certifications">Certifications</a></li>
+      <li><a class="block py-2 text-center rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold" href="#contact">Hire Me</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section id="home" class="relative min-h-screen flex flex-col justify-center bg-grid overflow-hidden">
+  <div class="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-cyan-500/20 glow-orb"></div>
+  <div class="absolute bottom-0 -right-32 h-96 w-96 rounded-full bg-indigo-500/20 glow-orb"></div>
+
+  <div class="relative max-w-6xl mx-auto px-5 md:px-8 pt-28 pb-16 grid lg:grid-cols-[1.1fr_.9fr] gap-14 items-center w-full">
+    <div class="min-w-0">
+      <span class="reveal inline-block max-w-full rounded-2xl sm:rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-1.5 text-xs font-semibold text-cyan-300">
+        <span class="inline-block align-middle mr-2 h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        {{hero.badge}}
+      </span>
+      <h1 class="reveal font-display text-5xl md:text-7xl font-bold text-white mt-6" style="transition-delay:.1s">
+        {{hero.firstName}} <span class="gradient-text">{{hero.lastName}}</span>
+      </h1>
+      <div class="reveal h-9 mt-4 font-display text-xl md:text-2xl text-slate-300" style="transition-delay:.2s">
+        <span id="typed"></span><span class="caret text-cyan-400">▍</span>
+      </div>
+      <p class="reveal mt-5 max-w-xl text-slate-400 leading-relaxed" style="transition-delay:.3s">
+        {{{blocks.intro}}}
+      </p>
+      <div class="reveal mt-8 flex flex-wrap gap-4" style="transition-delay:.4s">
+        <a href="#projects" class="px-7 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:opacity-90 hover:-translate-y-0.5 transition">
+          View My Work
+        </a>
+        <a href="{{resume.file}}" download
+           class="inline-flex items-center gap-2 px-7 py-3 rounded-lg border border-cyan-500/50 bg-cyan-500/10 font-semibold text-cyan-300 hover:bg-cyan-500/20 hover:-translate-y-0.5 transition">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          {{resume.label}}
+        </a>
+        <a href="#contact" class="px-7 py-3 rounded-lg border border-slate-700 font-semibold text-slate-200 hover:border-cyan-400/60 hover:text-cyan-300 transition">
+          Get in Touch
+        </a>
+      </div>
+      <div class="reveal mt-8 flex items-center gap-4" style="transition-delay:.5s">
+        <a href="{{contact.github.url}}" target="_blank" rel="noopener" aria-label="GitHub"
+           class="p-3 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-cyan-400/60 hover:-translate-y-1 transition">
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <a href="{{contact.linkedin.url}}" target="_blank" rel="noopener" aria-label="LinkedIn"
+           class="p-3 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-cyan-400/60 hover:-translate-y-1 transition">
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="mailto:{{contact.email}}" aria-label="Email"
+           class="p-3 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-cyan-400/60 hover:-translate-y-1 transition">
+          <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Profile photo + floating code card -->
+    <div class="reveal relative mx-auto w-full min-w-0 max-w-xs sm:max-w-sm lg:max-w-md" style="transition-delay:.3s">
+      <div class="photo-frame rounded-2xl">
+        <img src="{{hero.photo}}" width="941" height="1568" fetchpriority="high"
+             alt="{{hero.photoAlt}}"
+             class="w-full aspect-[4/5] object-cover object-top rounded-2xl bg-slate-900" />
+      </div>
+
+      <div class="hidden lg:block absolute z-20 -bottom-10 -left-12 w-[17rem] rounded-xl border border-slate-800 bg-slate-900/95 backdrop-blur shadow-2xl shadow-cyan-500/20">
+        <div class="flex items-center gap-2 border-b border-slate-800 px-4 py-2.5">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-500/80"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-yellow-500/80"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-green-500/80"></span>
+          <span class="ml-2 text-[11px] text-slate-400 font-mono">{{hero.codeCard.filename}}</span>
+        </div>
+<pre class="px-4 py-3.5 text-[12px] leading-6 font-mono">{{{blocks.codeCard}}}</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech marquee -->
+<div class="overflow-hidden border-y border-slate-800/80 bg-slate-900/40 py-3.5">
+  <div class="marquee-track flex w-max gap-10 text-sm font-medium text-slate-400">
+{{{blocks.marquee}}}
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="max-w-6xl mx-auto px-5 md:px-8 py-24">
+  <div class="reveal">
+    <p class="text-xs font-semibold tracking-[0.3em] text-cyan-400 uppercase">01 · About</p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-2">Who I Am</h2>
+  </div>
+  <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-10 mt-10">
+    <div class="reveal space-y-5 leading-relaxed text-slate-400">
+      <p>
+        I'm a motivated and detail-oriented <span class="text-white font-medium">Frontend Developer</span> with strong
+        expertise in <span class="text-cyan-300">React.js</span>, <span class="text-cyan-300">JavaScript (ES6+)</span>,
+        <span class="text-cyan-300">HTML5</span>, <span class="text-cyan-300">CSS3</span>, and
+        <span class="text-cyan-300">Tailwind CSS</span>. I'm passionate about building fast, responsive, and
+        user-friendly web applications.
+      </p>
+      <p>
+        I'm adept at state management with <span class="text-white font-medium">Redux</span>, component architecture,
+        and version control using <span class="text-white font-medium">Git/GitHub</span> — and I love shipping
+        production-ready apps on <span class="text-white font-medium">Vercel</span>.
+      </p>
+      <p>
+        Currently pursuing my B.Tech in Computer Science &amp; Engineering (Class of 2026), I'm eager to contribute
+        my frontend skills to high-performing production web applications.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+{{{blocks.stats}}}
+      </div>
+    </div>
+    <div class="reveal rounded-2xl border border-slate-800 bg-slate-900/60 p-7 space-y-5" style="transition-delay:.15s">
+      <h3 class="font-display text-lg font-semibold text-white">Quick Facts</h3>
+      <div class="space-y-4 text-sm">
+        <div class="flex justify-between gap-4 border-b border-slate-800 pb-3"><span class="text-slate-400">Name</span><span class="text-slate-200 font-medium text-right">{{hero.firstName}} {{hero.lastName}}</span></div>
+        <div class="flex justify-between gap-4 border-b border-slate-800 pb-3"><span class="text-slate-400">Role</span><span class="text-slate-200 font-medium text-right">{{site.jobTitle}}</span></div>
+        <div class="flex justify-between gap-4 border-b border-slate-800 pb-3"><span class="text-slate-400">Degree</span><span class="text-slate-200 font-medium text-right">{{site.degree}}</span></div>
+        <div class="flex justify-between gap-4 border-b border-slate-800 pb-3"><span class="text-slate-400">Location</span><span class="text-slate-200 font-medium text-right">{{contact.location}}</span></div>
+        <div class="flex justify-between gap-4"><span class="text-slate-400">Status</span><span class="text-emerald-400 font-semibold text-right">{{contact.status}}</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" class="max-w-6xl mx-auto px-5 md:px-8 py-24">
+  <div class="reveal">
+    <p class="text-xs font-semibold tracking-[0.3em] text-cyan-400 uppercase">02 · Skills</p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-2">Technical Arsenal</h2>
+  </div>
+  <div class="grid md:grid-cols-2 gap-6 mt-10">
+{{{blocks.skills}}}
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" class="max-w-6xl mx-auto px-5 md:px-8 py-24">
+  <div class="reveal">
+    <p class="text-xs font-semibold tracking-[0.3em] text-cyan-400 uppercase">03 · Projects</p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-2">Things I've Built</h2>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-8 mt-10">
+{{{blocks.projects}}}
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education" class="max-w-6xl mx-auto px-5 md:px-8 py-24">
+  <div class="reveal">
+    <p class="text-xs font-semibold tracking-[0.3em] text-cyan-400 uppercase">04 · Education</p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-2">Academic Journey</h2>
+  </div>
+  <div class="timeline mt-12 space-y-12">
+    <div class="reveal timeline-item">
+      <span class="timeline-dot"></span>
+      <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-300">2022 — 2026</span>
+      <h3 class="font-display text-lg font-semibold text-white mt-3">B.Tech in Computer Science &amp; Engineering</h3>
+      <p class="text-slate-400 text-sm mt-1">Dr. A.P.J. Abdul Kalam Technical University (BBDIT)</p>
+    </div>
+    <div class="reveal timeline-item" style="transition-delay:.1s">
+      <span class="timeline-dot"></span>
+      <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-300">2019</span>
+      <h3 class="font-display text-lg font-semibold text-white mt-3">12th (Intermediate)</h3>
+      <p class="text-slate-400 text-sm mt-1">UP Board (T.H.P.S.I.C, Kushinagar)</p>
+    </div>
+    <div class="reveal timeline-item" style="transition-delay:.2s">
+      <span class="timeline-dot"></span>
+      <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-300">2017</span>
+      <h3 class="font-display text-lg font-semibold text-white mt-3">10th (High School)</h3>
+      <p class="text-slate-400 text-sm mt-1">UP Board (T.H.P.S.I.C, Kushinagar)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section id="certifications" class="max-w-6xl mx-auto px-5 md:px-8 py-24">
+  <div class="reveal">
+    <p class="text-xs font-semibold tracking-[0.3em] text-cyan-400 uppercase">05 · Certifications</p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-2">Continuous Learning</h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6 mt-10">
+{{{blocks.certifications}}}
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="max-w-6xl mx-auto px-5 md:px-8 py-24">
+  <div class="reveal">
+    <p class="text-xs font-semibold tracking-[0.3em] text-cyan-400 uppercase">06 · Contact</p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-2">Let's Build Something Together</h2>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-10 mt-10">
+    <div class="space-y-5">
+      <div class="reveal flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-900/60 p-5">
+        <span class="p-3 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0"><svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+        <div class="min-w-0">
+          <p class="text-xs text-slate-400">Email</p>
+          <a href="mailto:{{contact.email}}" class="text-sm font-medium text-slate-200 hover:text-cyan-300 transition break-all">{{contact.email}}</a>
+        </div>
+        <button id="copyEmail" class="ml-auto p-2 rounded-lg border border-slate-700 text-slate-400 hover:text-cyan-300 hover:border-cyan-400/60 transition" title="Copy email">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+      <div class="reveal flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-900/60 p-5" style="transition-delay:.05s">
+        <span class="p-3 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0"><svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <div>
+          <p class="text-xs text-slate-400">Phone</p>
+          <a href="{{contact.phoneHref}}" class="text-sm font-medium text-slate-200 hover:text-cyan-300 transition">{{contact.phone}}</a>
+        </div>
+      </div>
+      <div class="reveal flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-900/60 p-5" style="transition-delay:.1s">
+        <span class="p-3 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0"><svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></span>
+        <div>
+          <p class="text-xs text-slate-400">LinkedIn</p>
+          <a href="{{contact.linkedin.url}}" target="_blank" rel="noopener" class="text-sm font-medium text-slate-200 hover:text-cyan-300 transition">{{contact.linkedin.label}}</a>
+        </div>
+      </div>
+      <div class="reveal flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-900/60 p-5" style="transition-delay:.15s">
+        <span class="p-3 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0"><svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></span>
+        <div>
+          <p class="text-xs text-slate-400">GitHub</p>
+          <a href="{{contact.github.url}}" target="_blank" rel="noopener" class="text-sm font-medium text-slate-200 hover:text-cyan-300 transition">{{contact.github.label}}</a>
+        </div>
+      </div>
+    </div>
+
+    <form id="contactForm" class="reveal rounded-2xl border border-slate-800 bg-slate-900/60 p-7 space-y-5" style="transition-delay:.1s">
+      <h3 class="font-display text-lg font-semibold text-white">Send a Message</h3>
+      <div>
+        <label for="name" class="block text-xs font-medium text-slate-400 mb-2">Your Name</label>
+        <input id="name" name="name" autocomplete="name" required placeholder="Recruiter / Friend"
+               class="w-full rounded-lg bg-slate-950/60 border border-slate-700 px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition" />
+      </div>
+      <div>
+        <label for="email" class="block text-xs font-medium text-slate-400 mb-2">Your Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"
+               class="w-full rounded-lg bg-slate-950/60 border border-slate-700 px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition" />
+      </div>
+      <div>
+        <label for="message" class="block text-xs font-medium text-slate-400 mb-2">Message</label>
+        <textarea id="message" name="message" required rows="4" placeholder="Hi Irfan, we'd love to chat about..."
+                  class="w-full rounded-lg bg-slate-950/60 border border-slate-700 px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition resize-none"></textarea>
+      </div>
+      <!-- Honeypot: bots fill this, humans never see it -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+      <button id="submitBtn" type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:opacity-90 disabled:opacity-60 transition">
+        Send Message ✉
+      </button>
+      <p id="formStatus" role="status" aria-live="polite" class="text-xs text-slate-400 text-center min-h-[1rem]"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-slate-800 py-10">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
+    <p>© <span id="year"></span> {{hero.firstName}} {{hero.lastName}} · {{site.jobTitle}}</p>
+    <p>Built with <span class="text-cyan-400">HTML</span> · <span class="text-cyan-400">Tailwind CSS</span> · <span class="text-cyan-400">JavaScript</span></p>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="toTop" aria-label="Back to top"
+        class="fixed bottom-6 right-6 p-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1">
+  <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+</button>
+
+<script>window.__SITE__ = {{{blocks.runtimeConfig}}};</script>
+<script src="assets/main.js" defer></script>
+</body>
+</html>

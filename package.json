@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Portfolio of Irfan Ansari, Frontend Developer",
   "scripts": {
-    "build": "tailwindcss -i src/input.css -o assets/styles.css --minify",
+    "build:css": "tailwindcss -i src/input.css -o assets/styles.css --minify",
+    "build:html": "node scripts/build-content.js",
+    "build": "npm run build:html && npm run build:css",
     "dev": "tailwindcss -i src/input.css -o assets/styles.css --watch"
   },
   "author": "",

@@ -10,9 +10,17 @@ module.exports = {
       },
     },
   },
-  // These classes only ever appear inside main.js (toggled at runtime), so the
-  // content scanner cannot see them. Without this they'd be stripped from the build.
+  // Accent colours are chosen per skill group / certification in content/*.json and
+  // composed at build time, so the scanner never sees the finished class name.
+  // Add a colour here before using it as an "accent" value.
   safelist: [
+    ...['cyan', 'violet', 'emerald', 'amber', 'blue', 'rose'].flatMap((c) => [
+      `bg-${c}-500/10`,
+      `text-${c}-400`,
+      `text-${c}-300`,
+      `hover:border-${c}-400/60`,
+      `hover:text-${c}-300`,
+    ]),
     'bg-[#0b1120]/90',
     'backdrop-blur',
     'border-slate-800',

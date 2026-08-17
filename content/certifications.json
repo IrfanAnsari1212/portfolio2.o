@@ -1,0 +1,23 @@
+[
+  {
+    "id": "fullstack-apna-college",
+    "title": "Full Stack Web Development",
+    "issuer": "Apna College",
+    "accent": "cyan",
+    "file": ""
+  },
+  {
+    "id": "java-ducat",
+    "title": "Java Workshop",
+    "issuer": "DUCAT",
+    "accent": "violet",
+    "file": ""
+  },
+  {
+    "id": "genai-ybi",
+    "title": "Generative AI",
+    "issuer": "YBI Foundation",
+    "accent": "emerald",
+    "file": ""
+  }
+]

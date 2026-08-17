@@ -1,0 +1,21 @@
+{
+  "badge": "Open to Work · Full-time & Internships · B.Tech CSE Graduate 2026",
+  "firstName": "Irfan",
+  "lastName": "Ansari",
+  "roles": [
+    "React.js Developer",
+    "JavaScript (ES6+) Enthusiast",
+    "Tailwind CSS Styler",
+    "Redux State Manager"
+  ],
+  "intro": "Frontend Developer passionate about building fast, responsive, and user-friendly web applications with React.js, JavaScript (ES6+) and Tailwind CSS.",
+  "introHighlights": ["React.js", "JavaScript (ES6+)", "Tailwind CSS"],
+  "photo": "assets/profile.jpg",
+  "photoAlt": "Portrait of Irfan Ansari, Frontend Developer",
+  "codeCard": {
+    "filename": "developer.js",
+    "stack": "React + TS",
+    "state": "Redux",
+    "openToWork": true
+  }
+}

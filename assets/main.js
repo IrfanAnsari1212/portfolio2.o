@@ -1,12 +1,17 @@
 // ---------- Shared config ----------
-const EMAIL = 'irfanking8215@gmail.com';
-// Paste a Formspree/Web3Forms endpoint here to get real inbox delivery.
-// Leave empty '' and the form falls back to opening the visitor's mail client.
-const FORM_ENDPOINT = '';
+// Injected by scripts/build-content.js from content/contact.json + content/hero.json.
+// The fallbacks only matter if the template is opened without a build.
+const SITE = window.__SITE__ || {};
+const EMAIL = SITE.email || 'irfanking8215@gmail.com';
+// Set "formEndpoint" in content/contact.json (Formspree/Web3Forms URL) for real
+// inbox delivery. Empty => the form falls back to the visitor's mail client.
+const FORM_ENDPOINT = SITE.formEndpoint || '';
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ---------- Typing effect ----------
-const roles = ['React.js Developer', 'JavaScript (ES6+) Enthusiast', 'Tailwind CSS Styler', 'Redux State Manager'];
+const roles = (SITE.roles && SITE.roles.length)
+  ? SITE.roles
+  : ['React.js Developer', 'JavaScript (ES6+) Enthusiast', 'Tailwind CSS Styler', 'Redux State Manager'];
 const typedEl = document.getElementById('typed');
 if (reduceMotion) {
   typedEl.textContent = roles[0];

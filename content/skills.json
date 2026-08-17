@@ -1,0 +1,30 @@
+[
+  {
+    "id": "frontend",
+    "title": "Frontend & Frameworks",
+    "accent": "cyan",
+    "icon": "code",
+    "items": ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "React.js", "Tailwind CSS"]
+  },
+  {
+    "id": "state",
+    "title": "State Management",
+    "accent": "violet",
+    "icon": "layers",
+    "items": ["Redux"]
+  },
+  {
+    "id": "database",
+    "title": "Database",
+    "accent": "emerald",
+    "icon": "database",
+    "items": ["MongoDB", "SQL"]
+  },
+  {
+    "id": "tools",
+    "title": "Tools & Platforms",
+    "accent": "amber",
+    "icon": "wrench",
+    "items": ["Git", "GitHub", "Vercel"]
+  }
+]

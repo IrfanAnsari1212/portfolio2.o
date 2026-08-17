@@ -1,0 +1,32 @@
+[
+  {
+    "id": "emergent-physio",
+    "title": "Emergent Physio",
+    "subtitle": "Healthcare Management System",
+    "domain": "emergent-physio.vercel.app",
+    "screenshot": "",
+    "bullets": [
+      "Built a secure, data-rich admin dashboard with full CRUD interfaces for managing appointments, medical services, and real-time settings.",
+      "Designed responsive UI components and schema-based form validation for a smooth user experience.",
+      "Optimized page-load performance and deployed the production app seamlessly on Vercel."
+    ],
+    "tags": ["React.js", "JavaScript", "Tailwind CSS", "CRUD"],
+    "repo": "https://github.com/IrfanAnsari1212/emergentPhysio",
+    "demo": "https://emergent-physio.vercel.app/"
+  },
+  {
+    "id": "smart-travel",
+    "title": "Smart Travel Planner",
+    "subtitle": "Interactive Map-Based Travel Platform",
+    "domain": "travel-platform-lime.vercel.app",
+    "screenshot": "",
+    "bullets": [
+      "Developed an interactive, responsive map-based frontend integrated with live routing data and mapping APIs.",
+      "Built dynamic React components for real-time route visualization, optimizing UI rendering under heavy state changes.",
+      "Utilized Git & GitHub for version control and deployed the live application on Vercel."
+    ],
+    "tags": ["React.js", "Mapping APIs", "Tailwind CSS", "Git & GitHub"],
+    "repo": "https://github.com/IrfanAnsari1212/smartTravel",
+    "demo": "https://travel-platform-lime.vercel.app/"
+  }
+]
