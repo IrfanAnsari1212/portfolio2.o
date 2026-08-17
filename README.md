@@ -2,7 +2,7 @@
 
 Static portfolio site with a React + TypeScript admin dashboard for editing it.
 
-**Live:** _add your deployed URL here_ · **Admin:** `/admin`
+**Live:** <https://portfolio2-o-ten.vercel.app> · **Admin:** `/admin`
 
 ## How it works
 
@@ -49,7 +49,6 @@ works even if the build is skipped; `admin/` is gitignored.
 ## Still to do
 
 - [ ] Upload a resume PDF via the admin (the hero button 404s until then)
-- [ ] Replace the placeholder domain in `content/site.json` with the real one
 - [ ] Add project screenshots via the admin
 - [ ] Set `formEndpoint` in `content/contact.json` for real inbox delivery
 - [ ] Complete the OAuth setup in `admin-src/README.md` so `/admin` can sign in
