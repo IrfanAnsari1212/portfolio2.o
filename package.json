@@ -5,7 +5,8 @@
   "scripts": {
     "build:css": "tailwindcss -i src/input.css -o assets/styles.css --minify",
     "build:html": "node scripts/build-content.js",
-    "build": "npm run build:html && npm run build:css",
+    "build:admin": "cd admin-src && npm install --no-audit --no-fund && npm run build",
+    "build": "npm run build:html && npm run build:css && npm run build:admin",
     "dev": "tailwindcss -i src/input.css -o assets/styles.css --watch"
   },
   "author": "",
