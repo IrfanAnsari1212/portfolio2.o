@@ -28,7 +28,10 @@ export function beginLogin() {
   // be replayed into this session.
   const state = crypto.randomUUID();
   sessionStorage.setItem(STATE_KEY, state);
-  const redirectUri = window.location.origin + window.location.pathname;
+  // Vercel serves both /admin and /admin/, but only one exact callback URL is
+  // registered on the OAuth app. Drop any trailing slash so both entry points
+  // produce the identical redirect_uri.
+  const redirectUri = window.location.origin + window.location.pathname.replace(/\/+$/, '');
   const url =
     'https://github.com/login/oauth/authorize' +
     `?client_id=${encodeURIComponent(CLIENT_ID)}` +
