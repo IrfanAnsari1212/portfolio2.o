@@ -22,6 +22,7 @@ const projects = read('projects.json');
 const certifications = read('certifications.json');
 const resume = read('resume.json');
 const experience = read('experience.json');
+const about = read('about.json');
 
 const esc = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -72,14 +73,35 @@ function marqueeBlock() {
   );
 }
 
+/**
+ * Minimal inline markup for the About paragraphs, so they stay editable as plain
+ * text in the admin: **bold** renders as emphasis, `backticks` as a tech term.
+ * Escaping happens first, so the markup cannot be used to inject HTML.
+ */
+function inlineMarkup(text) {
+  return esc(text)
+    .replace(/\*\*([^*]+)\*\*/g, '<span class="text-white font-medium">$1</span>')
+    .replace(/`([^`]+)`/g, '<span class="text-cyan-300">$1</span>');
+}
+
+function aboutBlock() {
+  return (about.paragraphs || [])
+    .filter((p) => p.trim())
+    .map((p) => `      <p>\n        ${inlineMarkup(p)}\n      </p>`)
+    .join('\n');
+}
+
 function statsBlock() {
-  const techCount = new Set(skills.flatMap((g) => g.items)).size;
-  const tiles = [
-    [projects.length, 'Apps Shipped'],
-    [certifications.length, 'Certifications'],
-    [techCount + '+', 'Technologies'],
-    [site.gradYear, 'Grad Year'],
-  ];
+  const derived = {
+    projects: () => String(projects.length),
+    certifications: () => String(certifications.length),
+    technologies: () => new Set(skills.flatMap((g) => g.items)).size + '+',
+    experience: () => String(experience.length),
+  };
+  const tiles = (about.stats || []).map((s) => [
+    s.source && derived[s.source] ? derived[s.source]() : s.value,
+    s.label,
+  ]);
   return tiles
     .map(
       ([v, label]) =>
@@ -329,6 +351,8 @@ const blocks = {
     : '',
   jsonld: jsonldBlock(),
   intro: introBlock(),
+  aboutHeading: esc(about.heading),
+  aboutParagraphs: aboutBlock(),
   codeCard: codeCardBlock(),
   marquee: marqueeBlock(),
   stats: statsBlock(),

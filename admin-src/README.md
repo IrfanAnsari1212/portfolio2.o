@@ -23,6 +23,7 @@ content/*.json      what the dashboard reads and writes
 | Skills | `skills.json` |
 | Certifications | `certifications.json` + uploads to `assets/certificates/` |
 | Hero | `hero.json` + uploads `assets/profile.jpg` |
+| About | `about.json` |
 | Contact | `contact.json` |
 
 ## One-time setup

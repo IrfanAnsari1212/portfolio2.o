@@ -78,6 +78,30 @@ export interface Contact {
   formEndpoint: string;
 }
 
+/** A stat tile either counts something automatically, or shows a fixed value. */
+export type StatSource = 'projects' | 'certifications' | 'technologies' | 'experience' | 'custom';
+
+export interface AboutStat {
+  label: string;
+  source: StatSource;
+  value: string;
+}
+
+export interface About {
+  heading: string;
+  /** Plain text. `**bold**` renders as emphasis, `` `backticks` `` as a tech term. */
+  paragraphs: string[];
+  stats: AboutStat[];
+}
+
+export const STAT_SOURCES: StatSource[] = [
+  'projects',
+  'certifications',
+  'technologies',
+  'experience',
+  'custom',
+];
+
 export interface Resume {
   file: string;
   label: string;
@@ -87,6 +111,7 @@ export interface Resume {
 /** Every editable file, keyed by its path under /content. */
 export interface ContentMap {
   'hero.json': Hero;
+  'about.json': About;
   'contact.json': Contact;
   'skills.json': SkillGroup[];
   'projects.json': Project[];

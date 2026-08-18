@@ -17,6 +17,7 @@ import { CertificationsEditor } from './editors/CertificationsEditor';
 import { ResumeEditor } from './editors/ResumeEditor';
 import { HeroEditor } from './editors/HeroEditor';
 import { ContactEditor } from './editors/ContactEditor';
+import { AboutEditor } from './editors/AboutEditor';
 
 const TABS = [
   { id: 'resume', label: 'Resume', Component: ResumeEditor },
@@ -25,6 +26,7 @@ const TABS = [
   { id: 'skills', label: 'Skills', Component: SkillsEditor },
   { id: 'certifications', label: 'Certifications', Component: CertificationsEditor },
   { id: 'hero', label: 'Hero', Component: HeroEditor },
+  { id: 'about', label: 'About', Component: AboutEditor },
   { id: 'contact', label: 'Contact', Component: ContactEditor },
 ] as const;
 

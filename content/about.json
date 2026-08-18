@@ -1,0 +1,14 @@
+{
+  "heading": "Who I Am",
+  "paragraphs": [
+    "I'm a motivated and detail-oriented **Frontend Developer** with strong expertise in `React.js`, `JavaScript (ES6+)`, `HTML5`, `CSS3`, and `Tailwind CSS`. I'm passionate about building fast, responsive, and user-friendly web applications.",
+    "I'm adept at state management with **Redux**, component architecture, and version control using **Git/GitHub** — and I love shipping production-ready apps on **Vercel**.",
+    "I hold a **B.Tech in Computer Science & Engineering (2026)** and I'm currently working as a software engineer, building and improving production web applications. I'm looking for a full-time frontend role where I can keep shipping user-facing work."
+  ],
+  "stats": [
+    { "label": "Apps Shipped", "source": "projects", "value": "" },
+    { "label": "Certifications", "source": "certifications", "value": "" },
+    { "label": "Technologies", "source": "technologies", "value": "" },
+    { "label": "Grad Year", "source": "custom", "value": "2026" }
+  ]
+}
