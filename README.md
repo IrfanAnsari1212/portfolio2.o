@@ -50,5 +50,6 @@ works even if the build is skipped; `admin/` is gitignored.
 
 - [ ] Upload a resume PDF via the admin (the hero button 404s until then)
 - [ ] Add project screenshots via the admin
+- [ ] Fill in the Experience section via the admin (the section is hidden while empty)
 - [ ] Set `formEndpoint` in `content/contact.json` for real inbox delivery
 - [ ] Complete the OAuth setup in `admin-src/README.md` so `/admin` can sign in

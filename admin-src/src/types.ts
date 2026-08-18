@@ -23,6 +23,30 @@ export interface Project {
   demo: string;
 }
 
+/** A project worked on inside a role — nested under Experience, not a standalone card. */
+export interface ExperienceProject {
+  id: string;
+  name: string;
+  description: string;
+  bullets: string[];
+  tech: string[];
+  link: string;
+  screenshot: string;
+}
+
+export interface Experience {
+  id: string;
+  company: string;
+  role: string;
+  type: string;
+  location: string;
+  /** Free text, e.g. "Jan 2026". Leave `end` empty for a current role. */
+  start: string;
+  end: string;
+  summary: string;
+  projects: ExperienceProject[];
+}
+
 export interface Certification {
   id: string;
   title: string;
@@ -66,6 +90,7 @@ export interface ContentMap {
   'contact.json': Contact;
   'skills.json': SkillGroup[];
   'projects.json': Project[];
+  'experience.json': Experience[];
   'certifications.json': Certification[];
   'resume.json': Resume;
 }

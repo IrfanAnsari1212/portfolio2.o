@@ -18,6 +18,7 @@ content/*.json      what the dashboard reads and writes
 | Tab | Writes to |
 |---|---|
 | Resume | `resume.json` + uploads `assets/Irfan-Ansari-Resume.pdf` |
+| Experience | `experience.json` + uploads to `assets/experience/` |
 | Projects | `projects.json` + uploads to `assets/projects/` |
 | Skills | `skills.json` |
 | Certifications | `certifications.json` + uploads to `assets/certificates/` |

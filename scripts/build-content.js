@@ -21,6 +21,7 @@ const skills = read('skills.json');
 const projects = read('projects.json');
 const certifications = read('certifications.json');
 const resume = read('resume.json');
+const experience = read('experience.json');
 
 const esc = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -184,6 +185,94 @@ function certificationsBlock() {
     .join('\n');
 }
 
+function experienceBlock() {
+  return experience
+    .map((role, i) => {
+      const period = role.end ? `${esc(role.start)} — ${esc(role.end)}` : `${esc(role.start)} — Present`;
+      const meta = [role.role, role.type].filter(Boolean).map(esc).join(' · ');
+      const dot = role.end
+        ? ''
+        : '<span class="inline-block align-middle mr-2 h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>';
+
+      const summary = role.summary
+        ? `      <p class="mt-4 text-sm text-slate-400 leading-relaxed">${esc(role.summary)}</p>\n`
+        : '';
+
+      const projectsHtml = (role.projects || [])
+        .map((p) => {
+          const bullets = (p.bullets || []).length
+            ? `          <ul class="mt-3 space-y-2 text-sm text-slate-400 leading-relaxed">\n` +
+              p.bullets
+                .map((b) => `            <li class="flex gap-3"><span class="text-cyan-400">▹</span>${esc(b)}</li>`)
+                .join('\n') +
+              `\n          </ul>\n`
+            : '';
+          const tech = (p.tech || []).length
+            ? `          <div class="flex flex-wrap gap-2 mt-4">\n` +
+              p.tech
+                .map(
+                  (t) =>
+                    `            <span class="px-3 py-1 rounded-md bg-slate-800/70 text-xs font-mono text-cyan-300">${esc(t)}</span>`
+                )
+                .join('\n') +
+              `\n          </div>\n`
+            : '';
+          const shot = p.screenshot
+            ? `          <img src="${esc(p.screenshot)}" alt="Screenshot of ${esc(p.name)}" loading="lazy" class="mt-4 w-full rounded-lg border border-slate-800 object-cover object-top" />\n`
+            : '';
+          const link = p.link
+            ? `          <a href="${esc(p.link)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition">\n` +
+              `            <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>\n` +
+              `            View live\n          </a>\n`
+            : '';
+          const desc = p.description
+            ? `          <p class="mt-1 text-sm text-cyan-400 font-medium">${esc(p.description)}</p>\n`
+            : '';
+          return (
+            `        <article>\n` +
+            `          <h4 class="font-display font-semibold text-white">${esc(p.name)}</h4>\n` +
+            `${desc}${bullets}${tech}${shot}${link}` +
+            `        </article>`
+          );
+        })
+        .join('\n');
+
+      const projectsWrap = projectsHtml
+        ? `      <div class="mt-6 space-y-7 border-l border-slate-800 pl-5">\n${projectsHtml}\n      </div>\n`
+        : '';
+
+      return (
+        `    <div class="reveal glow-card rounded-2xl border border-slate-800 bg-slate-900/60 p-7"${delayAttr(i)}>\n` +
+        `      <div class="flex flex-wrap items-start justify-between gap-4">\n` +
+        `        <div class="min-w-0">\n` +
+        `          <h3 class="font-display text-xl font-semibold text-white">${esc(role.company)}</h3>\n` +
+        `          <p class="text-sm text-cyan-400 font-medium mt-1">${meta}</p>\n` +
+        (role.location
+          ? `          <p class="text-xs text-slate-400 mt-1">${esc(role.location)}</p>\n`
+          : '') +
+        `        </div>\n` +
+        `        <span class="shrink-0 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-300">${dot}${period}</span>\n` +
+        `      </div>\n${summary}${projectsWrap}` +
+        `    </div>`
+      );
+    })
+    .join('\n');
+}
+
+/**
+ * The Experience section only exists once there is something in experience.json,
+ * so the eyebrow numbers ("01 · About") have to be assigned at build time rather
+ * than hardcoded — otherwise they'd skip a number whenever it is empty.
+ */
+function sectionNumbers() {
+  const order = ['About', 'Skills', ...(experience.length ? ['Experience'] : []), 'Projects', 'Education', 'Certifications', 'Contact'];
+  const out = {};
+  order.forEach((name, i) => {
+    out['n' + name] = String(i + 1).padStart(2, '0');
+  });
+  return out;
+}
+
 function jsonldBlock() {
   return JSON.stringify(
     {
@@ -199,6 +288,14 @@ function jsonldBlock() {
       alumniOf: { '@type': 'CollegeOrUniversity', name: site.university },
       knowsAbout: [...new Set(skills.flatMap((g) => g.items))],
       sameAs: [contact.github.url, contact.linkedin.url],
+      // Current employer, when there is one — this is the part Google actually
+      // uses to connect a person to an organisation.
+      ...(() => {
+        const role = experience.find((r) => !r.end);
+        return role && role.company
+          ? { worksFor: { '@type': 'Organization', name: role.company } }
+          : {};
+      })(),
     },
     null,
     2
@@ -208,7 +305,28 @@ function jsonldBlock() {
 /* ---------- render ---------- */
 
 const data = { site, hero, contact, resume };
+const current = experience.find((r) => !r.end);
+
 const blocks = {
+  ...sectionNumbers(),
+  // Whole section is omitted while experience.json is empty, so an unfinished
+  // Experience heading never ships.
+  experienceSection: experience.length
+    ? `\n<!-- ============ EXPERIENCE ============ -->\n` +
+      `<section id="experience" class="max-w-6xl mx-auto px-5 md:px-8 py-24">\n` +
+      `  <div class="reveal">\n` +
+      `    <p class="text-xs font-semibold tracking-[0.3em] text-cyan-400 uppercase">${sectionNumbers().nExperience} · Experience</p>\n` +
+      `    <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-2">Where I've Worked</h2>\n` +
+      `  </div>\n` +
+      `  <div class="mt-10 space-y-8">\n${experienceBlock()}\n  </div>\n` +
+      `</section>\n`
+    : '',
+  experienceNav: experience.length
+    ? '\n      <li><a class="nav-link" href="#experience">Experience</a></li>'
+    : '',
+  experienceNavMobile: experience.length
+    ? '\n      <li><a class="nav-link block py-1" href="#experience">Experience</a></li>'
+    : '',
   jsonld: jsonldBlock(),
   intro: introBlock(),
   codeCard: codeCardBlock(),

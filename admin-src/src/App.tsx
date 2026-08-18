@@ -12,6 +12,7 @@ import {
 import { REPO_SLUG } from './github';
 import { SkillsEditor } from './editors/SkillsEditor';
 import { ProjectsEditor } from './editors/ProjectsEditor';
+import { ExperienceEditor } from './editors/ExperienceEditor';
 import { CertificationsEditor } from './editors/CertificationsEditor';
 import { ResumeEditor } from './editors/ResumeEditor';
 import { HeroEditor } from './editors/HeroEditor';
@@ -19,6 +20,7 @@ import { ContactEditor } from './editors/ContactEditor';
 
 const TABS = [
   { id: 'resume', label: 'Resume', Component: ResumeEditor },
+  { id: 'experience', label: 'Experience', Component: ExperienceEditor },
   { id: 'projects', label: 'Projects', Component: ProjectsEditor },
   { id: 'skills', label: 'Skills', Component: SkillsEditor },
   { id: 'certifications', label: 'Certifications', Component: CertificationsEditor },
