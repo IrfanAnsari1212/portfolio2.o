@@ -40,7 +40,7 @@ export function FileUpload({
 
     setBusy(true);
     try {
-      const name = fileName || safeFileName(file.name);
+      const name = fileName || safeFileName(file.name, file.type);
       const path = `${folder}/${name}`;
       await uploadAsset(token, file, path, `Upload ${name} via admin`);
       // Cache-bust so a replaced file of the same name shows the new version.

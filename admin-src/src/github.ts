@@ -141,11 +141,44 @@ export async function uploadAsset(
   return targetPath;
 }
 
-/** Slugify a filename so uploads never produce awkward URLs. */
-export function safeFileName(name: string): string {
+/**
+ * Extension to fall back on when the uploaded file has none. A stored file with
+ * no extension is served as application/octet-stream, which makes the browser
+ * download it instead of opening it — so a certificate link silently stops
+ * working as a preview.
+ */
+/** Extensions considered valid for each type the uploader accepts, canonical first. */
+const MIME_EXTENSIONS: Record<string, string[]> = {
+  'application/pdf': ['.pdf'],
+  'image/png': ['.png'],
+  'image/jpeg': ['.jpg', '.jpeg'],
+  'image/webp': ['.webp'],
+  'image/gif': ['.gif'],
+  'image/svg+xml': ['.svg'],
+};
+
+/**
+ * Slugify a filename so uploads never produce awkward URLs, and make sure the
+ * result carries an extension.
+ *
+ * The browser-reported type wins over the filename, because a name alone cannot
+ * be trusted: "report.v2" looks like it ends in an extension and "delta batch"
+ * looks like it does not. Getting this wrong stores a file with no extension,
+ * which is then served as application/octet-stream — so the link downloads the
+ * file instead of previewing it.
+ */
+export function safeFileName(name: string, mimeType = ''): string {
   const dot = name.lastIndexOf('.');
-  const ext = dot > -1 ? name.slice(dot).toLowerCase() : '';
-  const base = (dot > -1 ? name.slice(0, dot) : name)
+  const nameExt = dot > 0 ? name.slice(dot).toLowerCase() : '';
+  const allowed = MIME_EXTENSIONS[mimeType] || [];
+
+  const ext = allowed.includes(nameExt)
+    ? nameExt // keep the author's spelling, e.g. .jpeg over .jpg
+    : allowed[0] || (/^\.[a-z0-9]{1,5}$/.test(nameExt) ? nameExt : '');
+
+  // Strip the extension off the stem only when it is the one being re-added.
+  const stem = ext && nameExt === ext ? name.slice(0, dot) : name;
+  const base = stem
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
