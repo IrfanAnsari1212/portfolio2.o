@@ -4,27 +4,48 @@
     "title": "Frontend & Frameworks",
     "accent": "cyan",
     "icon": "code",
-    "items": ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "React.js", "Tailwind CSS"]
+    "items": [
+      "JavaScript (ES6+)",
+      "React.js",
+      "TypeScript",
+      "OOPs",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Render",
+      "DSA",
+      "System Design (LLD)"
+    ]
   },
   {
     "id": "state",
     "title": "State Management",
     "accent": "violet",
     "icon": "layers",
-    "items": ["Redux"]
+    "items": [
+      "Redux"
+    ]
   },
   {
     "id": "database",
     "title": "Database",
     "accent": "emerald",
     "icon": "database",
-    "items": ["MongoDB", "SQL"]
+    "items": [
+      "MongoDB",
+      "SQL",
+      "PostgreSql"
+    ]
   },
   {
     "id": "tools",
     "title": "Tools & Platforms",
     "accent": "amber",
     "icon": "wrench",
-    "items": ["Git", "GitHub", "Vercel"]
+    "items": [
+      "Git",
+      "GitHub",
+      "Vercel"
+    ]
   }
 ]
