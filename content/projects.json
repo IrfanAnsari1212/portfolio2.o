@@ -38,5 +38,28 @@
     ],
     "repo": "https://github.com/IrfanAnsari1212/smartTravel",
     "demo": "https://smarttravel-1.onrender.com/"
+  },
+  {
+    "id": "project-9xyix",
+    "title": "FitTrack",
+    "subtitle": "GYM management SaaS Platform",
+    "domain": "https://fittrack-ivory-three.vercel.app/",
+    "screenshot": "assets/projects/screenshot-2026-10-02-105438.png",
+    "bullets": [
+      "A super Admin Dashboard that manage GYMs ",
+      "SaaS platform for maintaining Gyms and GYM users, where GYM owner can manage and track GYM users daily diet and workout , and handle subscriptions. and more ",
+      "Users can track and manage thiere diet plans and daily target of protien and calories ,",
+      "User can edit and make a new diet and workout plan , "
+    ],
+    "tags": [
+      "TypeScript",
+      "ReactJs",
+      "NextJs",
+      "Mongodb",
+      "zod",
+      "Claude code"
+    ],
+    "repo": "https://github.com/IrfanAnsari1212/fittrack",
+    "demo": "https://fittrack-ivory-three.vercel.app/"
   }
 ]
