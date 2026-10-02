@@ -43,7 +43,7 @@
     "id": "project-9xyix",
     "title": "FitTrack",
     "subtitle": "GYM management SaaS Platform",
-    "domain": "https://fittrack-ivory-three.vercel.app/",
+    "domain": "fittrack-ivory-three.vercel.app/",
     "screenshot": "assets/projects/screenshot-2026-10-02-105438.png",
     "bullets": [
       "A super Admin Dashboard that manage GYMs ",
